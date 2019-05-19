@@ -7,12 +7,13 @@ import todoRoutes from "./routes";
 
 const app = express();
 
+// use promises
+mongoose.Promise = global.Promise;
+
 mongoose
   .connect(config.DB, { useNewUrlParser: true, dbName: "todos" })
   .then(() => console.log("DB connect"))
   .catch(err => console.log(`error in DB connection: ${err}`));
-
-mongoose.Promise = global.Promise;
 
 // parse application/x-www-form-urlencoded
 app.use(bosyParser.urlencoded({ extended: true }));

@@ -3,7 +3,8 @@ import bosyParser from "body-parser";
 import mongoose from "mongoose";
 
 import config from "./config";
-import todoRoutes from "./routes";
+import indexRoutes from "./routes/indexRoutes";
+import todoRoutes from "./routes/todoRoutes";
 
 const app = express();
 
@@ -21,10 +22,8 @@ app.use(bosyParser.urlencoded({ extended: true }));
 app.use(bosyParser.json());
 
 // Routes
+app.use("/", indexRoutes);
 app.use("/todo", todoRoutes);
-app.get("/", (request, response) =>
-  response.status(200).json({ working: true })
-);
 
 app.listen(config.APP_PORT, () => {
   console.log(`Server is running on port ${config.APP_PORT}`);

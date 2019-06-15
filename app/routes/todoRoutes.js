@@ -4,7 +4,7 @@ import todo from "../models/Todo";
 const todoRouter = Router();
 
 // get all todos
-todoRouter.get((req, res, next) => {
+todoRouter.get("/", (req, res, next) => {
   todo.find((err, todos) => {
     if (err) {
       return next(new Error(err));
@@ -15,11 +15,11 @@ todoRouter.get((req, res, next) => {
 });
 
 // add new todo
-todoRouter.post((req, res) => {
+todoRouter.post("/", (req, res) => {
   todo.create(
     {
       name: req.body.name,
-      done: folse,
+      done: false,
       creationTime: new Date()
     },
     (err, todo) => {
@@ -32,7 +32,7 @@ todoRouter.post((req, res) => {
 });
 
 // delete todo
-todoRouter.delete((req, res) => {
+todoRouter.delete("/", (req, res) => {
   const {
     body: { id }
   } = req;
@@ -50,7 +50,7 @@ todoRouter.delete((req, res) => {
 });
 
 // update todo
-todoRouter.patch((req, res) => {
+todoRouter.patch("/", (req, res) => {
   const {
     body: { id, name, done }
   } = req;

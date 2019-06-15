@@ -1,4 +1,4 @@
 export default {
-  DB: "mongodb://127.0.0.1:27017/todos",
+  DB: "mongodb://mongo:27017",
   APP_PORT: 9000
 };

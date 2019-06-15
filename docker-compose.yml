@@ -3,24 +3,27 @@ services:
   server:
     command: npm start
     build:
-      context: ./
+      context: .
       dockerfile: docker/Dockerfile
     restart: always
     ports:
       - "9000:9000"
+    volumes:
+      - ./:/app
+      - /node_modules
     depends_on:
-      - mongodb
+      - mongo
     networks:
       - webappnetwork
-  mongodb:
+  mongo:
     image: mongo
     restart: always
-    container_name: mongodb
+    container_name: mongo
     environment:
       - MONGO_DATA_DIR=/data/db
       - MONGO_LOG_DIR=/dev/null
     volumes:
-      - ./data-node:/data/db
+      - ./data/db:/data/db
     ports:
       - 27017:27017
     command: mongod --noauth --smallfiles

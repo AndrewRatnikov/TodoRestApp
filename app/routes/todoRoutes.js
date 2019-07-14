@@ -5,6 +5,7 @@ const todoRouter = Router();
 
 // get all todos
 todoRouter.get("/", (req, res, next) => {
+  console.log("todos");
   todo.find((err, todos) => {
     if (err) {
       return next(new Error(err));

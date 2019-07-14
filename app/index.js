@@ -22,8 +22,8 @@ app.use(bosyParser.urlencoded({ extended: true }));
 app.use(bosyParser.json());
 
 // Routes
-app.use("/", indexRoutes);
 app.use("/todo", todoRoutes);
+app.use("/", indexRoutes);
 
 app.listen(config.APP_PORT, () => {
   console.log(`Server is running on port ${config.APP_PORT}`);

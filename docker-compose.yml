@@ -1,16 +1,13 @@
 version: "3.7"
 services:
   server:
-    command: npm start
-    build:
-      context: .
-      dockerfile: docker/Dockerfile
-    restart: always
-    ports:
-      - "9000:9000"
+    image: node:11-alpine
     volumes:
-      - ./:/app
-      - /node_modules
+      - .:/app
+    working_dir: /app
+    command: npm start
+    ports:
+      - 9000
     depends_on:
       - mongo
     networks:
@@ -32,3 +29,11 @@ services:
 networks:
   webappnetwork:
     driver: bridge
+install:
+  extends:
+    service: server
+  command: npm i
+build:
+  extends:
+    service: server
+  command: npm start

@@ -4,7 +4,7 @@ const router = Router();
 
 /* GET home page. */
 router.get("/", function(req, res, next) {
-  res.status(200).json({ working: true });
+  res.status(200).json({ working: "test" });
 });
 
 router.post("/", (request, response) => {

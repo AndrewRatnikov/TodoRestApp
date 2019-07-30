@@ -7,7 +7,7 @@ services:
     working_dir: /app
     command: npm start
     ports:
-      - 9000
+      - 9000:9000
     depends_on:
       - mongo
     networks:
@@ -29,11 +29,3 @@ services:
 networks:
   webappnetwork:
     driver: bridge
-install:
-  extends:
-    service: server
-  command: npm i
-build:
-  extends:
-    service: server
-  command: npm start

@@ -22,7 +22,7 @@ app.use(bosyParser.urlencoded({ extended: true }));
 app.use(bosyParser.json());
 
 // Routes
-app.use("/todo", todoRoutes);
+app.use("/todos", todoRoutes);
 app.use("/", indexRoutes);
 
 app.listen(config.APP_PORT, () => {
